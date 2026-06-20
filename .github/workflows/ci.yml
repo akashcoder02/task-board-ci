@@ -1,29 +1,27 @@
-name: Simple CI Demo
+name: Node CI Pipeline
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
-  check-project:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Show Files
-        run: ls -la
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      - name: Check index.html Exists
-        run: test -f index.html
+      - name: Install dependencies
+        run: npm install
 
-      - name: Check style.css Exists
-        run: test -f css/styles.css
+      - name: Run ESLint
+        run: npm run lint
 
-      - name: Check script.js Exists
-        run: test -f js/app.js
-
-      - name: Success Message
-        run: echo "Project looks good! CI Passed."
+      - name: Run tests
+        run: npm test
