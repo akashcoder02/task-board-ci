@@ -20,7 +20,7 @@ jobs:
         run: test -f index.html
 
       - name: Check style.css Exists
-        run: test -f styles.css
+        run: test -f css/styles.css
 
       - name: Check script.js Exists
         run: test -f script.js
