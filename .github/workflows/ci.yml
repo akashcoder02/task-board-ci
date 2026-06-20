@@ -23,7 +23,7 @@ jobs:
         run: test -f css/styles.css
 
       - name: Check script.js Exists
-        run: test -f script.js
+        run: test -f app.js
 
       - name: Success Message
         run: echo "Project looks good! CI Passed."
